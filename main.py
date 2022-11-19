@@ -11,7 +11,7 @@ def run_analysis(book_list):
     print('')
     print("*******************************************************************")
     print('')
-    #analysis_one(books)
+    analysis_one(books)
     print('')
     print("*******************************************************************")
     print('')
@@ -47,8 +47,18 @@ def example_analysis(book_list):
         f"The most expensive book in 2016 was {highest_cost_book.name} with a price of {highest_cost_book.price}")
 
 
-#def analysis_one(book_list):
-    #print("Analysis of which book had the lowest number of reviews in 2018")
+def analysis_one(book_list):
+    print("Analysis of which book had the lowest number of reviews in 2018")
+    # Find all books from 2018
+    # Use a lambda filter function to find books who have a year of 2018
+    # Converting to a list and saving as variable books_2018
+    books_2018 = list(filter(lambda book: book.year == 2018, book_list))
+    # Calculating the minimum number of reviews and saving that book as lowest_review_book
+    # Using min() with lambda function
+    lowest_review_book = min(books_2018, key=lambda book: book.number_of_reviews)
+    # Print that book's name & number of reviews to terminal
+    print(
+        f"The book with the lowest number of reviews in 2018 was {lowest_review_book.name} with {lowest_review_book.number_of_reviews} reviews")
 
 
 #def analysis_two(book_list):
