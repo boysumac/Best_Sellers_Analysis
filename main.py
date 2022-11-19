@@ -15,7 +15,7 @@ def run_analysis(book_list):
     print('')
     print("*******************************************************************")
     print('')
-    #analysis_two(books)
+    analysis_two(books)
     print('')
     print("*******************************************************************")
     print('')
@@ -60,13 +60,28 @@ def analysis_one(book_list):
     print(
         f"The book with the lowest number of reviews in 2018 was {lowest_review_book.name} with {lowest_review_book.number_of_reviews} reviews")
 
+def analysis_two(book_list):
+    print("Analysis of which genre (fiction or non-fiction) has appeared the most in the top 50's list")
+    # Use a lambda filter function to find books who have a genre of fiction
+    # Converting to a list and saving as variable fiction_books
+    fiction_books = list(filter(lambda book: book.genre == "Fiction", book_list))
+    # Use a lambda filter function to find books who have a genre of non-fiction
+    # Converting to a list and saving as variable non_fiction_books
+    non_fiction_books = list(filter(lambda book: book.genre == "Non Fiction", book_list))
+    # Print the number of books in each genre to terminal
+    print(
+        f"There are {len(fiction_books)} fiction books and {len(non_fiction_books)} non-fiction books in the top 50")
+    print ("Non fiction books appear more often in the top 50 list")
 
-#def analysis_two(book_list):
-    #print("Analysis of which genre (fiction or non-fiction) has appeared the most in the top 50's list")
+def analysis_three(book_list):
+    print("Analysis of which book has appeared the most in the top 50's list, and how many times it has appeared")
+    # Use a lambda filter function to find which book has appeared the most in the top 50's list
+    # Converting to a list and saving as variable most_popular_book
+    most_popular_book = max(book_list, key=lambda book: book_list.count(book))
+    # Print the book's name and how many times it has appeared in the top 50's list to terminal
+    print(
+        f"The most popular book in the top 50's list is {most_popular_book.name} and it has appeared {book_list.count(most_popular_book)} times")
 
-
-#def analysis_three(book_list):
-    #print("Analysis of which book has appeared the most in the top 50's list, and how many times it has appeared")
 
 
 # BONUS USER STORIES:

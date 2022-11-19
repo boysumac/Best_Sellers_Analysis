@@ -12,7 +12,7 @@ class Book:
         self.id = book_dictionary['id']
         self.name = book_dictionary['name']
         self.author = book_dictionary['author']
-#        self.user_rating = book_dictionary['user rating']
+        self.user_rating = book_dictionary['user_rating']
         self.number_of_reviews = book_dictionary['number_of_reviews']
         self.price = book_dictionary['price']
         self.year = book_dictionary['year']
