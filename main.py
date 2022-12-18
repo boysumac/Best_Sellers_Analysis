@@ -1,7 +1,6 @@
 from data import data_list
 from book import Book
 
-
 def run_analysis(book_list):
     books = create_book_list(book_list)
     print('')
@@ -19,7 +18,7 @@ def run_analysis(book_list):
     print('')
     print("*******************************************************************")
     print('')
-    #analysis_three(books)
+    analysis_three(books)
 
 
 def create_book_list(data_list):
@@ -63,10 +62,8 @@ def analysis_one(book_list):
 def analysis_two(book_list):
     print("Analysis of which genre (fiction or non-fiction) has appeared the most in the top 50's list")
     # Use a lambda filter function to find books who have a genre of fiction
-    # Converting to a list and saving as variable fiction_books
     fiction_books = list(filter(lambda book: book.genre == "Fiction", book_list))
     # Use a lambda filter function to find books who have a genre of non-fiction
-    # Converting to a list and saving as variable non_fiction_books
     non_fiction_books = list(filter(lambda book: book.genre == "Non Fiction", book_list))
     # Print the number of books in each genre to terminal
     print(
@@ -74,15 +71,26 @@ def analysis_two(book_list):
     print ("Non fiction books appear more often in the top 50 list")
 
 def analysis_three(book_list):
-    print("Analysis of which book has appeared the most in the top 50's list, and how many times it has appeared")
-    # Use a lambda filter function to find which book has appeared the most in the top 50's list
-    # Converting to a list and saving as variable most_popular_book
-    most_popular_book = max(book_list, key=lambda book: book_list.count(book))
-    # Print the book's name and how many times it has appeared in the top 50's list to terminal
+    print("Analysis of which book appeared most often in top 50's list, and how often it appeared")
+    # Create  dictioary from to hold most common book name and count
+    # Create a list of book names
+    book_name_list = [book['name'] for book in book_list]
+    # Loop through unique book names to find the most common book name
+    best_book = {"name":"book name", "count": 0}  
+    # Use a lambda filter function to find books who have a name of book_name
+    # Use len() to find the number of books with that name
+    unique_book_names = set(book_name_list)      
+    for book_name in unique_book_names:
+            results = len(
+                list(filter(lambda name: name == book_name, book_name_list)))
+
+    if results > best_book["count"]:
+            best_book["count"] = results
+            best_book["name"] = book_name
+     # Print the most common book name and count to terminal
     print(
-        f"The most popular book in the top 50's list is {most_popular_book.name} and it has appeared {book_list.count(most_popular_book)} times")
-
-
+        f"The book that appears the most in the top 50 list is {best_book['name']} with {best_book['count']} appearances")
+    
 
 # BONUS USER STORIES:
 
